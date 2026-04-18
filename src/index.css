@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-scarlet-50: #fef2f2;
+    --color-scarlet-100: #fee2e2;
+    --color-scarlet-200: #fecaca;
+    --color-scarlet-300: #fca5a5;
+    --color-scarlet-400: #f87171;
+    --color-scarlet-500: #dc2626;
+    --color-scarlet-600: #cc0033;
+    --color-scarlet-700: #a8002a;
+    --color-scarlet-800: #7f0020;
+    --color-scarlet-900: #5c0017;
+    --color-scarlet-950: #3a000e;
+}
