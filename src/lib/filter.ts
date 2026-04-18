@@ -20,6 +20,7 @@ export function filterCourses(
         const haystack = [
           course.courseString,
           course.expandedTitle,
+          course.title,
           course.subjectDescription,
           ...course.sections.map((s) => s.instructorsText),
         ]

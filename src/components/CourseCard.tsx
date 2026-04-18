@@ -18,7 +18,7 @@ export function CourseCard({ course }: CourseCardProps) {
               {course.courseString}
             </span>
             <h2 className="font-semibold text-stone-900 dark:text-stone-100">
-              {course.expandedTitle}
+              {course.expandedTitle || course.title}
             </h2>
           </div>
           <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">
