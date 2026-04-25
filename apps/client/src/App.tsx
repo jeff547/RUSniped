@@ -21,7 +21,9 @@ function App() {
     filters,
     setSearch,
     setOpenOnly,
+    setOnlineOnly,
     toggleSubject,
+    toggleCoreCode,
     clearFilters,
     hasActiveFilters,
   } = useFilters();
@@ -30,6 +32,20 @@ function App() {
     const uniqueMap = new Map(
       courses.map((c) => [c.subject, c.subjectDescription]),
     );
+    return Array.from(uniqueMap.entries()).sort((a, b) =>
+      a[0].localeCompare(b[0]),
+    );
+  }, [courses]);
+
+  const coreCodes = useMemo(() => {
+    const uniqueMap = new Map<string, string>();
+    for (const course of courses) {
+      for (const coreCode of course.coreCodes) {
+        if (!uniqueMap.has(coreCode.code)) {
+          uniqueMap.set(coreCode.code, coreCode.description);
+        }
+      }
+    }
     return Array.from(uniqueMap.entries()).sort((a, b) =>
       a[0].localeCompare(b[0]),
     );
@@ -92,9 +108,12 @@ function App() {
           <FilterPanel
             filters={filters}
             subjects={subjects}
+            coreCodes={coreCodes}
             onSearchChange={setSearch}
             onSubjectToggle={toggleSubject}
+            onCoreCodeToggle={toggleCoreCode}
             onOpenOnlyChange={setOpenOnly}
+            onOnlineOnlyChange={setOnlineOnly}
             onClear={clearFilters}
             hasActiveFilters={hasActiveFilters}
           />

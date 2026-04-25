@@ -1,4 +1,4 @@
-import type { Course } from "../types/course";
+import type { Course } from "@rusniped/shared";
 
 const COURSES_URL = "/api/courses.json?year=2026&term=7&campus=NB";
 

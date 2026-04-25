@@ -1,5 +1,7 @@
 import clsx from "clsx";
-import type { Section } from "../types/course";
+import type { Section } from "@rusniped/shared";
+import { isSectionOnline } from "@rusniped/shared";
+import { Monitor } from "lucide-react";
 
 type SectionRowProps = {
   section: Section;
@@ -17,6 +19,13 @@ export function SectionRow({ section }: SectionRowProps) {
       <span className="font-medium w-10 shrink-0 text-stone-700 dark:text-stone-200">
         {section.number}
       </span>
+
+      {isSectionOnline(section) && (
+        <span className="flex items-center gap-1 text-xs text-stone-500 dark:text-stone-400 shrink-0">
+          <Monitor className="w-3.5 h-3.5" />
+          Online
+        </span>
+      )}
 
       <span className="text-stone-600 dark:text-stone-300 truncate flex-1">
         {section.instructorsText || "—"}

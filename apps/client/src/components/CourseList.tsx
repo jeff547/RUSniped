@@ -1,4 +1,4 @@
-import type { Course } from "../types/course";
+import type { Course } from "@rusniped/shared";
 import { CourseCard } from "./CourseCard";
 
 type CourseListProps = {

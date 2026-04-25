@@ -1,5 +1,5 @@
-import type { Course } from "../types/course";
-import { SectionRow } from "./SectionRow.tsx";
+import type { Course } from "@rusniped/shared";
+import { SectionRow } from "./SectionRow";
 
 type CourseCardProps = {
   course: Course;
@@ -28,6 +28,23 @@ export function CourseCard({ course }: CourseCardProps) {
             <p className="text-xs text-stone-400 dark:text-stone-500 mt-1 italic">
               {course.preReqNotes}
             </p>
+          )}
+          {course.coreCodes.length > 0 && (
+            <div className="flex flex-wrap gap-1 mt-2">
+              {course.coreCodes
+                .filter((cc) => !cc.code.startsWith("SOE")) // hide SOE clutter
+                .map((cc) => (
+                  <span
+                    key={cc.code}
+                    title={cc.description}
+                    className="text-xs font-mono font-semibold px-1.5 py-0.5 rounded
+                     bg-scarlet-50 dark:bg-scarlet-900/30
+                     text-scarlet-700 dark:text-scarlet-300"
+                  >
+                    {cc.code}
+                  </span>
+                ))}
+            </div>
           )}
         </div>
         <span className="text-xs text-stone-500 dark:text-stone-400 whitespace-nowrap shrink-0">
