@@ -1,5 +1,5 @@
-import type { Course, CourseFilters } from "@rusniped/shared";
-import { isSectionOnline } from "@rusniped/shared";
+import type { Course, CourseFilters } from "../types/course";
+import { isSectionOnline } from "../types/course";
 
 export function filterCourses(
   courses: Course[],

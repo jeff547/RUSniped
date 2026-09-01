@@ -1,6 +1,6 @@
 import clsx from "clsx";
-import type { Section } from "@rusniped/shared";
-import { isSectionOnline } from "@rusniped/shared";
+import type { Section } from "../types/course";
+import { isSectionOnline } from "../types/course";
 import { Monitor } from "lucide-react";
 
 type SectionRowProps = {

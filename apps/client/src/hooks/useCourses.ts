@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import type { Course } from "@rusniped/shared";
+import type { Course } from "../types/course";
 import { useCourseData } from "./useCourseData";
 import { useOpenSections } from "./useOpenSections";
 

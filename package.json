@@ -3,13 +3,13 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "apps/client"
   ],
   "scripts": {
     "dev": "npm run dev --workspace=@rusniped/web",
+    "dev:server": "cd apps/server && uvicorn main:app --reload --port 3000",
     "build": "npm run build --workspace=@rusniped/web",
-    "typecheck": "tsc --noEmit -p apps/web && tsc --noEmit -p packages/shared"
+    "typecheck": "tsc --noEmit -p apps/client && tsc --noEmit -p packages/shared"
   },
   "devDependencies": {
     "typescript": "^5.4.0"

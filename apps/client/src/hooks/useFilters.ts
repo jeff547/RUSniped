@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { defaultFilters, type CourseFilters } from "@rusniped/shared";
+import { defaultFilters, type CourseFilters } from "../types/course";
 
 export function useFilters() {
   const [filters, setFilters] = useState<CourseFilters>(defaultFilters);

@@ -1,4 +1,4 @@
-import type { CourseFilters } from "@rusniped/shared";
+import type { CourseFilters } from "../types/course";
 
 type FilterPanelProps = {
   filters: CourseFilters;
