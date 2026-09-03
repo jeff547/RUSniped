@@ -1,0 +1,7 @@
+.git
+node_modules
+apps/client/node_modules
+apps/client/dist
+apps/server/__pycache__
+*.py[cod]
+.DS_Store
