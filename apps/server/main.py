@@ -1,5 +1,5 @@
 import httpx
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -25,7 +25,18 @@ async def proxy(path: str, request: Request):
     url = f"{RUTGERS_BASE}/soc/api/{path}"
     params = dict(request.query_params)
     async with httpx.AsyncClient() as client:
-        r = await client.get(url, params=params)
+        try:
+            r = await client.get(
+                url,
+                params=params,
+                timeout=10.0,
+            )
+        except httpx.RequestError as exc:
+            raise HTTPException(
+                status_code=502,
+                detail=f"Upstream request failed: {exc}",
+            )
+        
     return Response(
         content=r.content,
         status_code=r.status_code,
