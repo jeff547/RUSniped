@@ -10,14 +10,13 @@ services:
 
   client:
     build:
-      context: .
-      dockerfile: apps/client/Dockerfile
+      context: ./apps/client
+      dockerfile: Dockerfile
     environment:
       VITE_API_PROXY_TARGET: http://server:3000
     volumes:
-      - .:/app
+      - ./apps/client:/app
       - client_node_modules:/app/node_modules
-      - client_workspace_node_modules:/app/apps/client/node_modules
     ports:
       - "127.0.0.1:5173:5173"
     depends_on:
@@ -25,4 +24,3 @@ services:
 
 volumes:
   client_node_modules:
-  client_workspace_node_modules:
