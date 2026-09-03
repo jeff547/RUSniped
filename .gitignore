@@ -3,6 +3,10 @@ node_modules/
 .pnp
 .pnp.js
 
+# Python bytecode
+__pycache__/
+*.py[cod]
+
 # Build outputs
 dist/
 build/
