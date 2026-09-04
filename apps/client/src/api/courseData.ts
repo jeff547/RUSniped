@@ -1,6 +1,8 @@
 import type { Course } from "../types/course";
 
-const COURSES_URL = "/api/courses.json?year=2026&term=7&campus=NB";
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3000/soc/api";
+const COURSES_URL = `${API_BASE_URL}/courses.json?year=2026&term=7&campus=NB`;
 
 export async function fetchCourses(): Promise<Course[]> {
   console.log("[courseData] fetching...");
