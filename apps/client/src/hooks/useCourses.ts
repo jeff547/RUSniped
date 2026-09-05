@@ -10,9 +10,9 @@ export function useCourses() {
   const courses = useMemo<Course[]>(() => {
     if (!courseDataQuery.data || !openSectionsQuery.data) return [];
 
-    const openSections = new Set(openSectionsQuery.data);
+    const openSections = new Set(openSectionsQuery.data.sections);
 
-    return courseDataQuery.data.map((course) => ({
+    return courseDataQuery.data.courses.map((course) => ({
       ...course,
       sections: course.sections.map((section) => ({
         ...section,
@@ -26,8 +26,11 @@ export function useCourses() {
     isLoading: courseDataQuery.isLoading || openSectionsQuery.isLoading,
     isError: courseDataQuery.isError || openSectionsQuery.isError,
     error: courseDataQuery.error || openSectionsQuery.error,
-    isFetching: openSectionsQuery.isFetching,
-    lastUpdated: openSectionsQuery.dataUpdatedAt,
+    isFetching: courseDataQuery.isFetching || openSectionsQuery.isFetching,
+    lastUpdated:
+      openSectionsQuery.data?.updatedAt
+        ? new Date(openSectionsQuery.data.updatedAt).getTime()
+        : openSectionsQuery.dataUpdatedAt,
     refetch: () => {
       courseDataQuery.refetch();
       openSectionsQuery.refetch();
