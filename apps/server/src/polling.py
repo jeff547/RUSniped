@@ -6,7 +6,7 @@ import httpx
 from .fetch import fetch_courses, fetch_open_sections
 from .state import CourseStore
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("rusniped.polling")
 
 COURSE_POLL_SECONDS = 60 * 60
 OPEN_SECTION_POLL_SECONDS = 15
@@ -47,4 +47,3 @@ async def poll_open_sections(
             logger.warning("Open sections refresh failed: %s", error)
 
         await asyncio.sleep(OPEN_SECTION_POLL_SECONDS)
-

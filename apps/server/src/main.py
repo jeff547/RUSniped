@@ -1,4 +1,5 @@
 import asyncio
+import logging
 from contextlib import asynccontextmanager
 
 import httpx
@@ -8,6 +9,22 @@ from fastapi.middleware.cors import CORSMiddleware
 from .polling import poll_courses, poll_open_sections
 from .routers import courses, events
 from .state import CourseStore
+
+
+def configure_logging() -> None:
+    logger = logging.getLogger("rusniped")
+    logger.setLevel(logging.INFO)
+    logger.propagate = False
+
+    if not logger.handlers:
+        handler = logging.StreamHandler()
+        handler.setFormatter(
+            logging.Formatter("%(asctime)s %(levelname)s [%(name)s] %(message)s")
+        )
+        logger.addHandler(handler)
+
+
+configure_logging()
 
 
 @asynccontextmanager
